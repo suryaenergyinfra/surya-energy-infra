@@ -122,12 +122,12 @@ export function Hero() {
             />
           </Suspense>
         ) : (
-          /* Static Fallback Poster: House reference with CSS parallax */
+          /* Static Fallback Poster: House reference with seamless atmospheric blending */
           <div
-            className="absolute inset-0 z-10 pointer-events-none flex items-center justify-center lg:justify-end lg:pr-16"
+            className="absolute inset-0 z-10 pointer-events-none flex items-end sm:items-center justify-center lg:justify-end lg:pr-16 pb-20 sm:pb-0"
             aria-hidden="true"
           >
-            <div className="relative w-full max-w-[500px] lg:max-w-[620px] aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border border-white/10 opacity-90">
+            <div className="relative w-full max-w-[340px] sm:max-w-[500px] lg:max-w-[640px] aspect-[4/3] rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(4,20,12,0.9)] border border-white/15 bg-[#04140C]/60 backdrop-blur-sm">
               <Image
                 src="/images/hero/house-ref.webp"
                 alt="Surya Energy Infra 3D rooftop solar reference"
@@ -136,7 +136,7 @@ export function Hero() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover object-center"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#04140C] via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#04140C] via-transparent to-transparent opacity-80" />
             </div>
           </div>
         )}
@@ -162,22 +162,22 @@ export function Hero() {
             </p>
 
             {/* Interactive Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+            <div className="flex items-center gap-2.5 sm:gap-3.5 w-full sm:w-auto">
               {/* Primary Action: Slide the Sun OR Mobile Hold to Charge */}
-              {isMobileSmall ? (
-                <HoldToCharge />
-              ) : (
-                <SunSlideButton />
-              )}
+              <div className="flex-1 sm:flex-none">
+                {isMobileSmall ? (
+                  <HoldToCharge />
+                ) : (
+                  <SunSlideButton />
+                )}
+              </div>
 
               {/* Tertiary Action: Phone Call with solar ray ripples */}
-              <div className="flex items-center gap-3">
-                <CallButton />
-              </div>
+              <CallButton />
             </div>
 
             {/* Secondary Action: Interactive kW Dial Segment */}
-            <div className="mt-4 sm:mt-5">
+            <div className="mt-3.5 sm:mt-5">
               <KwDial
                 selectedKw={selectedKw}
                 onSelectKw={(kw) => setSelectedKw(kw)}
@@ -187,24 +187,26 @@ export function Hero() {
         </div>
 
         {/* Bottom Rail: Timeline Scroll Progress "Dawn → Golden hour" */}
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-4 sm:pb-6 pointer-events-none">
-          <div className="flex items-center justify-between text-[11px] font-mono uppercase tracking-wider text-[#9DB3A5] mb-2 pointer-events-auto">
-            <span className="flex items-center gap-1.5">
+        <div className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-6 sm:pb-8 lg:pb-10 pointer-events-none">
+          <div className="flex items-center justify-between text-[11px] font-mono uppercase tracking-wider text-[#9DB3A5] mb-2 pointer-events-auto px-1">
+            <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#04140C]/70 backdrop-blur-md border border-white/10">
               <span className="w-2 h-2 rounded-full bg-[#3F8F3A]" />
               Dawn
             </span>
-            <span className="text-white/60">Midday</span>
-            <span className="flex items-center gap-1.5 text-[#8CC63F]">
+            <span className="text-white/70 px-2.5 py-0.5 rounded-full bg-[#04140C]/70 backdrop-blur-md border border-white/10">
+              Midday
+            </span>
+            <span className="flex items-center gap-1.5 text-[#8CC63F] px-2.5 py-0.5 rounded-full bg-[#04140C]/70 backdrop-blur-md border border-[#8CC63F]/30">
               Golden Hour
               <span className="w-2 h-2 rounded-full bg-[#8CC63F]" />
             </span>
           </div>
 
           {/* Thin Progress Rail with Signature Leaf Gradient Fill */}
-          <div className="relative w-full h-1.5 rounded-full bg-white/15 overflow-hidden backdrop-blur-sm pointer-events-auto">
+          <div className="relative w-full h-1.5 rounded-full bg-white/20 overflow-hidden backdrop-blur-sm pointer-events-auto shadow-inner">
             <motion.div
               style={{ width: railFillWidth }}
-              className="h-full rounded-full bg-gradient-to-r from-[#3F8F3A] to-[#8CC63F] shadow-[0_0_10px_rgba(140,198,63,0.6)]"
+              className="h-full rounded-full bg-gradient-to-r from-[#3F8F3A] to-[#8CC63F] shadow-[0_0_12px_rgba(140,198,63,0.7)]"
             />
           </div>
         </div>

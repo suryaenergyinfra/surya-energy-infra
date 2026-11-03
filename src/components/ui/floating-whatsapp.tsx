@@ -10,9 +10,9 @@ export function FloatingWhatsApp() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show floating button only after scrolling past the hero section (400px)
-      // This prevents any overlap with hero cards or hero buttons
-      if (window.scrollY > 400) {
+      // The hero is a pinned 220vh scroll section. Only show floating button once scrolled past the hero section.
+      const heroThreshold = window.innerHeight * 1.85;
+      if (window.scrollY > heroThreshold) {
         setIsVisible(true);
       } else {
         setIsVisible(false);

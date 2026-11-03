@@ -40,7 +40,7 @@ function SolarRooftopArray({
 
   useFrame(() => {
     const p = progressRef.current; // 0 to 1
-    const baseGlow = Math.max(0.15, Math.min(1.0, p * 1.3));
+    const baseGlow = Math.max(0.2, Math.min(1.0, p * 1.3));
 
     panels.forEach((item) => {
       const mat = materialsRef.current[item.id];
@@ -48,7 +48,7 @@ function SolarRooftopArray({
         const isActive = item.id < activePanelsCount;
         if (isActive) {
           mat.emissive.setRGB(0.55 * baseGlow, 0.78 * baseGlow, 0.25 * baseGlow);
-          mat.emissiveIntensity = 0.6 + baseGlow * 1.4;
+          mat.emissiveIntensity = 0.7 + baseGlow * 1.5;
         } else {
           mat.emissive.setRGB(0.03, 0.16, 0.1);
           mat.emissiveIntensity = 0.2;
@@ -62,7 +62,7 @@ function SolarRooftopArray({
       {/* Aluminum mounting structure rails */}
       <mesh position={[0, -0.04, 0]}>
         <boxGeometry args={[2.5, 0.04, 2.0]} />
-        <meshStandardMaterial color="#6B7280" metalness={0.8} roughness={0.3} />
+        <meshStandardMaterial color="#94A3B8" metalness={0.85} roughness={0.25} />
       </mesh>
 
       {panels.map((p) => {
@@ -71,7 +71,7 @@ function SolarRooftopArray({
             {/* Panel Frame */}
             <mesh position={[0, 0, 0]}>
               <boxGeometry args={[0.52, 0.03, 0.88]} />
-              <meshStandardMaterial color="#374151" metalness={0.7} roughness={0.4} />
+              <meshStandardMaterial color="#475569" metalness={0.75} roughness={0.35} />
             </mesh>
             {/* Panel Glass / Photovoltaic Cells */}
             <mesh position={[0, 0.018, 0]}>
@@ -81,8 +81,8 @@ function SolarRooftopArray({
                   materialsRef.current[p.id] = el;
                 }}
                 color="#04140C"
-                roughness={0.15}
-                metalness={0.85}
+                roughness={0.12}
+                metalness={0.9}
               />
             </mesh>
           </group>
@@ -92,58 +92,86 @@ function SolarRooftopArray({
   );
 }
 
-// 2. Procedural Low-Poly Indian Home & Rooftop
+// 2. Procedural Modern Indian Home & Rooftop with refined architecture
 function ProceduralHome() {
   return (
     <group position={[0, -0.4, 0]}>
       {/* Main Building Body */}
       <mesh position={[0, 0.45, 0]}>
         <boxGeometry args={[3.2, 0.9, 2.8]} />
-        <meshStandardMaterial color="#E8EFE5" roughness={0.6} />
+        <meshStandardMaterial color="#F8FAF7" roughness={0.4} />
       </mesh>
 
       {/* Parapet Roof Border */}
       <mesh position={[0, 0.96, 0]}>
         <boxGeometry args={[3.3, 0.14, 2.9]} />
-        <meshStandardMaterial color="#CBD8C7" roughness={0.5} />
+        <meshStandardMaterial color="#CBD8C7" roughness={0.4} />
       </mesh>
 
-      {/* Front Entrance & Windows */}
+      {/* Front Entrance & Warm Glowing Windows */}
       <mesh position={[0, 0.35, 1.41]}>
         <boxGeometry args={[0.65, 0.7, 0.04]} />
         <meshStandardMaterial color="#0B4A2B" roughness={0.4} />
       </mesh>
       <mesh position={[-0.9, 0.45, 1.41]}>
         <boxGeometry args={[0.6, 0.45, 0.04]} />
-        <meshStandardMaterial color="#1E3A2B" roughness={0.2} metalness={0.6} />
+        <meshStandardMaterial
+          color="#8CC63F"
+          emissive="#3F8F3A"
+          emissiveIntensity={0.35}
+          roughness={0.2}
+        />
       </mesh>
       <mesh position={[0.9, 0.45, 1.41]}>
         <boxGeometry args={[0.6, 0.45, 0.04]} />
-        <meshStandardMaterial color="#1E3A2B" roughness={0.2} metalness={0.6} />
+        <meshStandardMaterial
+          color="#8CC63F"
+          emissive="#3F8F3A"
+          emissiveIntensity={0.35}
+          roughness={0.2}
+        />
       </mesh>
 
       {/* Rooftop Water Tank (Signature Indian rooftop feature) */}
       <group position={[1.1, 1.25, -0.8]}>
         <mesh position={[0, 0, 0]}>
           <cylinderGeometry args={[0.26, 0.26, 0.5, 16]} />
-          <meshStandardMaterial color="#1F2937" roughness={0.5} />
+          <meshStandardMaterial color="#1E293B" roughness={0.4} />
         </mesh>
         <mesh position={[0, -0.3, 0]}>
           <boxGeometry args={[0.55, 0.12, 0.55]} />
-          <meshStandardMaterial color="#9CA3AF" roughness={0.8} />
+          <meshStandardMaterial color="#64748B" roughness={0.7} />
         </mesh>
       </group>
 
-      {/* Inverter Box mounted on house side */}
-      <mesh position={[1.62, 0.5, 0.4]}>
-        <boxGeometry args={[0.06, 0.35, 0.25]} />
-        <meshStandardMaterial color="#8CC63F" emissive="#3F8F3A" emissiveIntensity={0.6} />
-      </mesh>
+      {/* Rooftop Terrace Planter / Greenery */}
+      <group position={[-1.15, 1.05, 1.0]}>
+        <mesh position={[0, 0, 0]}>
+          <boxGeometry args={[0.6, 0.18, 0.25]} />
+          <meshStandardMaterial color="#475569" roughness={0.6} />
+        </mesh>
+        <mesh position={[0, 0.14, 0]}>
+          <boxGeometry args={[0.54, 0.14, 0.2]} />
+          <meshStandardMaterial color="#3F8F3A" roughness={0.8} />
+        </mesh>
+      </group>
+
+      {/* Inverter Box mounted on house side with active status light */}
+      <group position={[1.62, 0.5, 0.4]}>
+        <mesh position={[0, 0, 0]}>
+          <boxGeometry args={[0.06, 0.35, 0.25]} />
+          <meshStandardMaterial color="#0B4A2B" roughness={0.3} />
+        </mesh>
+        <mesh position={[0.035, 0.08, 0]}>
+          <boxGeometry args={[0.01, 0.06, 0.06]} />
+          <meshStandardMaterial color="#8CC63F" emissive="#8CC63F" emissiveIntensity={1.5} />
+        </mesh>
+      </group>
 
       {/* Foundation plinth */}
       <mesh position={[0, -0.05, 0]}>
         <boxGeometry args={[3.8, 0.12, 3.4]} />
-        <meshStandardMaterial color="#072A19" roughness={0.9} />
+        <meshStandardMaterial color="#072A19" roughness={0.8} />
       </mesh>
     </group>
   );
@@ -165,15 +193,15 @@ function BackgroundScenery() {
         <meshStandardMaterial color="#072A19" roughness={0.9} />
       </mesh>
 
-      {/* Stylised Grid Utility Pole (Right side) */}
+      {/* Stylised Grid Utility Pole */}
       <group position={[3.2, 0.4, 1.0]}>
         <mesh position={[0, 0.7, 0]}>
           <cylinderGeometry args={[0.05, 0.07, 2.6, 8]} />
-          <meshStandardMaterial color="#4B5563" roughness={0.7} />
+          <meshStandardMaterial color="#475569" roughness={0.7} />
         </mesh>
         <mesh position={[0, 1.85, 0]} rotation={[0, 0.3, 0]}>
           <boxGeometry args={[0.9, 0.05, 0.05]} />
-          <meshStandardMaterial color="#374151" roughness={0.7} />
+          <meshStandardMaterial color="#334155" roughness={0.7} />
         </mesh>
         <mesh position={[-0.38, 1.95, 0]}>
           <cylinderGeometry args={[0.03, 0.03, 0.1, 6]} />
@@ -189,7 +217,13 @@ function BackgroundScenery() {
 }
 
 // 4. Sun Orb that arcs across the sky with scroll progress
-function SunOrb({ progressRef }: { progressRef: React.MutableRefObject<number> }) {
+function SunOrb({
+  progressRef,
+  isMobile,
+}: {
+  progressRef: React.MutableRefObject<number>;
+  isMobile: boolean;
+}) {
   const meshRef = useRef<THREE.Group>(null);
   const texture = useMemo(() => {
     const loader = new THREE.TextureLoader();
@@ -199,12 +233,22 @@ function SunOrb({ progressRef }: { progressRef: React.MutableRefObject<number> }
   useFrame(() => {
     if (!meshRef.current) return;
     const p = progressRef.current; // 0 to 1
-    const x = -4.8 + p * 9.6;
-    const y = 0.4 + Math.sin(p * Math.PI) * 3.4;
-    const z = -4.0 + Math.sin(p * Math.PI) * 1.5;
 
-    meshRef.current.position.set(x, y, z);
-    const scale = 0.9 + Math.sin(p * Math.PI) * 0.45;
+    if (isMobile) {
+      // Mobile arc: travels horizontally in upper sky
+      const x = -2.8 + p * 5.6;
+      const y = 1.6 + Math.sin(p * Math.PI) * 2.2;
+      const z = -3.5;
+      meshRef.current.position.set(x, y, z);
+    } else {
+      // Desktop arc: travels across wide sky
+      const x = -5.2 + p * 10.4;
+      const y = 0.5 + Math.sin(p * Math.PI) * 3.6;
+      const z = -4.0 + Math.sin(p * Math.PI) * 1.5;
+      meshRef.current.position.set(x, y, z);
+    }
+
+    const scale = (isMobile ? 0.75 : 1.0) * (0.9 + Math.sin(p * Math.PI) * 0.45);
     meshRef.current.scale.set(scale, scale, scale);
   });
 
@@ -224,7 +268,7 @@ function SunOrb({ progressRef }: { progressRef: React.MutableRefObject<number> }
         <meshBasicMaterial color="#8CC63F" />
       </mesh>
 
-      <pointLight color="#8CC63F" intensity={2.5} distance={15} decay={1.8} />
+      <pointLight color="#8CC63F" intensity={3.0} distance={16} decay={1.8} />
     </group>
   );
 }
@@ -286,7 +330,7 @@ function EnergyParticleStream({
   }, [particleCount, curve]);
 
   useFrame((_, delta) => {
-    if (!pointsRef.current) return;
+    if (!pointsRef.current || !offsetsRef.current || !speedsRef.current) return;
     const scrollProg = progressRef.current;
     const speedMultiplier = 0.4 + scrollProg * 1.2;
 
@@ -327,8 +371,8 @@ function EnergyParticleStream({
   );
 }
 
-// 6. Floating 3D Depth Chips (Layer 3): ₹66,000/kW & ₹78,000 subsidy
-function FloatingDepthChips() {
+// 6. Floating 3D Depth Chips (Layer 3): Desktop only to avoid mobile text collision
+function FloatingDepthChips({ isMobile }: { isMobile: boolean }) {
   const chip1Ref = useRef<THREE.Group>(null);
   const chip2Ref = useRef<THREE.Group>(null);
 
@@ -342,11 +386,14 @@ function FloatingDepthChips() {
     }
   });
 
+  // Hide 3D Html chips on mobile to prevent collision with mobile headlines
+  if (isMobile) return null;
+
   return (
     <>
       <group ref={chip1Ref} position={[-1.6, 1.35, 0.4]}>
         <Html center transform distanceFactor={5.5}>
-          <div className="px-3 py-1.5 rounded-full bg-[#072A19]/85 backdrop-blur-md border border-[#8CC63F]/40 shadow-[0_4px_16px_rgba(4,20,12,0.8)] text-[#8CC63F] text-[11px] font-semibold whitespace-nowrap select-none pointer-events-none">
+          <div className="px-3 py-1.5 rounded-full bg-[#072A19]/90 backdrop-blur-md border border-[#8CC63F]/40 shadow-[0_4px_16px_rgba(4,20,12,0.8)] text-[#8CC63F] text-[11px] font-semibold whitespace-nowrap select-none pointer-events-none">
             ₹66,000 / kW Complete EPC
           </div>
         </Html>
@@ -354,7 +401,7 @@ function FloatingDepthChips() {
 
       <group ref={chip2Ref} position={[1.7, 1.05, 0.6]}>
         <Html center transform distanceFactor={5.5}>
-          <div className="px-3 py-1.5 rounded-full bg-[#072A19]/85 backdrop-blur-md border border-[#8CC63F]/40 shadow-[0_4px_16px_rgba(4,20,12,0.8)] text-[#8CC63F] text-[11px] font-semibold whitespace-nowrap select-none pointer-events-none">
+          <div className="px-3 py-1.5 rounded-full bg-[#072A19]/90 backdrop-blur-md border border-[#8CC63F]/40 shadow-[0_4px_16px_rgba(4,20,12,0.8)] text-[#8CC63F] text-[11px] font-semibold whitespace-nowrap select-none pointer-events-none">
             ₹78,000 Direct Central Subsidy
           </div>
         </Html>
@@ -389,14 +436,14 @@ function ParallaxSceneGroup({
 export function HeroScene({ progressRef, selectedKw, pointerRef }: HeroSceneProps) {
   const [isMobile, setIsMobile] = useState<boolean>(() => {
     if (typeof window !== "undefined") {
-      return window.innerWidth < 768;
+      return window.innerWidth < 1024;
     }
     return false;
   });
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < 1024);
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -405,26 +452,32 @@ export function HeroScene({ progressRef, selectedKw, pointerRef }: HeroSceneProp
   return (
     <div className="absolute inset-0 z-10 pointer-events-none" aria-hidden="true">
       <Canvas
-        camera={{ position: [0, 1.2, 5.0], fov: 42 }}
+        camera={{ position: [0, 1.2, 5.0], fov: isMobile ? 46 : 40 }}
         dpr={isMobile ? [1, 1.25] : [1, 1.5]}
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
         frameloop="always"
         style={{ pointerEvents: "none" }}
       >
-        <ambientLight color="#D5E6CC" intensity={0.8} />
-        <directionalLight position={[3, 5, 4]} color="#F1F8EC" intensity={1.2} />
+        <ambientLight color="#D5E6CC" intensity={0.85} />
+        <directionalLight position={[4, 6, 4]} color="#F1F8EC" intensity={1.3} />
 
         <ParallaxSceneGroup pointerRef={pointerRef}>
-          <group position={[0, -0.3, 0]}>
+          {/* Responsive 3D Scene Group:
+              - Desktop (lg): Shifted to the right [1.6, -0.2, 0] so it sits beside the left-aligned text
+              - Mobile: Shifted down [0, -1.35, 0.2] so it sits cleanly below the text overlay */}
+          <group
+            position={isMobile ? [0, -1.35, 0.2] : [1.6, -0.2, 0]}
+            scale={isMobile ? [0.72, 0.72, 0.72] : [1.02, 1.02, 1.02]}
+          >
             <ProceduralHome />
             <SolarRooftopArray selectedKw={selectedKw} progressRef={progressRef} />
             <BackgroundScenery />
-            <SunOrb progressRef={progressRef} />
+            <SunOrb progressRef={progressRef} isMobile={isMobile} />
             <EnergyParticleStream
               progressRef={progressRef}
-              particleCount={isMobile ? 250 : 550}
+              particleCount={isMobile ? 220 : 550}
             />
-            <FloatingDepthChips />
+            <FloatingDepthChips isMobile={isMobile} />
           </group>
         </ParallaxSceneGroup>
       </Canvas>

@@ -36,7 +36,7 @@ export function CallButton({ className = "" }: CallButtonProps) {
         transition: "transform 0.25s ease-out",
       }}
       aria-label="Call Surya Energy Infra at +91 94949 53848"
-      className={`group relative inline-flex items-center gap-2.5 h-14 sm:h-16 px-4 rounded-full bg-[#072A19] border border-white/20 text-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#8CC63F] focus:ring-offset-2 focus:ring-offset-[#04140C] select-none transition-all cursor-pointer ${className}`}
+      className={`group relative inline-flex items-center justify-center sm:justify-start gap-2.5 h-14 sm:h-16 w-14 sm:w-auto px-0 sm:px-4 rounded-full bg-[#072A19] border border-white/20 text-white shadow-lg focus:outline-none focus:ring-2 focus:ring-[#8CC63F] focus:ring-offset-2 focus:ring-offset-[#04140C] select-none transition-all cursor-pointer shrink-0 ${className}`}
     >
       {/* Slow radiating ripple rings (like sun rays) */}
       <span className="absolute -inset-1 rounded-full border border-[#8CC63F]/20 animate-ping opacity-75 pointer-events-none duration-1000" />

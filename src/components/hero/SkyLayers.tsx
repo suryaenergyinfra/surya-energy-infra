@@ -76,8 +76,9 @@ export function SkyLayers({ dawnOpacity, middayOpacity, goldenOpacity }: SkyLaye
       />
 
       {/* 5. Forest-950 scrim overlay behind typography for guaranteed AA contrast */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#04140C] via-[#04140C]/50 to-[#04140C]/30" />
-      <div className="absolute inset-y-0 left-0 w-full lg:w-3/5 bg-gradient-to-r from-[#04140C]/90 via-[#04140C]/60 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#04140C]/90 via-[#04140C]/40 to-transparent lg:hidden" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#04140C] via-[#04140C]/40 to-transparent" />
+      <div className="hidden lg:block absolute inset-y-0 left-0 w-3/5 bg-gradient-to-r from-[#04140C]/95 via-[#04140C]/65 to-transparent" />
     </div>
   );
 }
