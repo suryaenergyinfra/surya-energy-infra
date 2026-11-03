@@ -6,8 +6,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { useWhatsAppModal } from "@/components/ui/whatsapp-modal-context";
 import { ChevronLeft, ChevronRight, ShieldCheck, ArrowRight } from "lucide-react";
-import { Hero3DSolarScene } from "@/components/home/hero-3d-solar-scene";
-import { SolarParticlesBackground } from "@/components/ui/solar-particles-background";
+import { HeroSolarCard } from "@/components/home/hero-solar-card";
 
 const HERO_SLIDES = [
   {
@@ -67,7 +66,7 @@ export function HeroSlideshow() {
 
   return (
     <section
-      className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-[#04140C] text-white pt-24 pb-20 md:py-32"
+      className="relative min-h-[90vh] lg:min-h-[94vh] flex items-center justify-center overflow-hidden bg-[#04140C] text-white pt-24 pb-16 lg:pt-28 lg:pb-20"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       aria-label="Hero Solar Slideshow"
@@ -106,9 +105,6 @@ export function HeroSlideshow() {
         </motion.div>
       </AnimatePresence>
 
-      {/* Floating 3D Solar Photon Particle Ambient Energy Field */}
-      <SolarParticlesBackground />
-
       {/* Content Container */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -132,7 +128,7 @@ export function HeroSlideshow() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-3xl sm:text-5xl lg:text-7xl font-medium font-heading text-white tracking-[-0.03em] leading-[1.08] mb-5 sm:mb-6"
+              className="text-3xl sm:text-5xl lg:text-6xl font-medium font-heading text-white tracking-[-0.03em] leading-[1.1] mb-4 sm:mb-5"
             >
               {slide.headlineLine1} <br />
               <span className="text-[#8CC63F]">{slide.headlineLine2}</span>
@@ -144,7 +140,7 @@ export function HeroSlideshow() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-sm sm:text-lg lg:text-xl text-[#9DB3A5] font-normal leading-relaxed mb-8 max-w-2xl"
+              className="text-sm sm:text-base lg:text-lg text-[#9DB3A5] font-normal leading-relaxed mb-6 sm:mb-8 max-w-xl"
             >
               {slide.subline}
             </motion.p>
@@ -165,22 +161,22 @@ export function HeroSlideshow() {
                     defaultNotes: "Interested in residential rooftop solar in Andhra Pradesh. Looking for PM Surya Ghar subsidy details.",
                   })
                 }
-                className="bg-[#8CC63F] text-[#04140C] font-semibold hover:bg-[#9ae045] active:scale-95 px-7 py-3.5 sm:px-8 sm:py-4 rounded-full text-sm sm:text-base shadow-lg transition-all cursor-pointer"
+                className="bg-[#8CC63F] text-[#04140C] font-semibold hover:bg-[#9ae045] active:scale-95 px-7 py-3.5 sm:px-8 sm:py-4 rounded-full text-sm sm:text-base shadow-[0_8px_25px_rgba(140,198,63,0.3)] transition-all cursor-pointer"
               >
                 Get Free Quote
               </button>
               <Link
                 href="/packages"
-                className="bg-transparent border border-white/40 text-white hover:bg-white hover:text-[#04140C] px-7 py-3.5 sm:px-8 sm:py-4 rounded-full text-sm sm:text-base font-medium flex items-center gap-2 transition-all group"
+                className="bg-white/10 hover:bg-white text-white hover:text-[#04140C] border border-white/30 backdrop-blur-sm px-7 py-3.5 sm:px-8 sm:py-4 rounded-full text-sm sm:text-base font-medium flex items-center gap-2 transition-all group shadow-sm active:scale-95"
               >
                 <span>View Packages</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </motion.div>
 
-            {/* Mobile 3D Solar Model */}
+            {/* Mobile Solar Card */}
             <div className="mt-8 block lg:hidden">
-              <Hero3DSolarScene />
+              <HeroSolarCard />
             </div>
 
             {/* Mobile Key Fact Badges (Under CTAs on mobile) */}
@@ -197,14 +193,14 @@ export function HeroSlideshow() {
             </div>
           </div>
 
-          {/* Right Column: 3D Interactive Topcon Solar Scene (3D Wow Factor) */}
+          {/* Right Column: Realistic 3D Interactive Solar Module Card */}
           <div className="hidden lg:block lg:col-span-5">
             <motion.div
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <Hero3DSolarScene />
+              <HeroSolarCard />
             </motion.div>
           </div>
         </div>
