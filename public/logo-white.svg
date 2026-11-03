@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 220" width="1024" height="220" fill="none">
+  <defs>
+    <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3F8F3A" />
+      <stop offset="100%" stop-color="#8CC63F" />
+    </linearGradient>
+  </defs>
+
+  <!-- Circular Leaf Mark -->
+  <g transform="translate(10, 8)">
+    <circle cx="102" cy="102" r="100" fill="url(#leafGrad)" />
+    <!-- Leaf vein / dynamic curve cut -->
+    <path d="M 28 170 C 50 140, 75 70, 190 70 C 130 90, 85 130, 42 186 Z" fill="#ffffff" opacity="0.95" />
+    <path d="M 32 176 C 85 125, 140 100, 192 78 C 145 105, 95 135, 40 188 Z" fill="#ffffff" opacity="0.4" />
+  </g>
+
+  <!-- Wordmark in White -->
+  <g fill="#FFFFFF" font-family="'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif">
+    <text x="245" y="112" font-size="64" font-weight="700" letter-spacing="-0.02em">SURYA ENERGY INFRA<tspan font-size="34" dy="-26" font-weight="500">™</tspan></text>
+  </g>
+
+  <!-- Subtitle Tagline -->
+  <g fill="#9DB3A5" font-family="'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif">
+    <text x="248" y="172" font-size="28" font-weight="600" letter-spacing="0.14em">POWERING A SUSTAINABLE FUTURE</text>
+  </g>
+</svg>
