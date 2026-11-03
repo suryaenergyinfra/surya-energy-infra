@@ -5,9 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { useWhatsAppModal } from "@/components/ui/whatsapp-modal-context";
-import { ChevronLeft, ChevronRight, ShieldCheck, ArrowRight, Zap, CheckCircle2 } from "lucide-react";
+import { ChevronLeft, ChevronRight, ShieldCheck, ArrowRight } from "lucide-react";
+import { Hero3DSolarScene } from "@/components/home/hero-3d-solar-scene";
+import { SolarParticlesBackground } from "@/components/ui/solar-particles-background";
 
-// PLACEHOLDER: replace with client's real photo (Rule D)
 const HERO_SLIDES = [
   {
     image: "/images/hero-1.webp",
@@ -16,6 +17,14 @@ const HERO_SLIDES = [
     headlineLine2: "Cut Your Bill.",
     subline: "PM Surya Ghar authorised rooftop solar, installed end to end across Andhra Pradesh.",
     badge: "Authorised PM Surya Ghar Vendor, Andhra Pradesh",
+  },
+  {
+    image: "/images/client-family.jpg",
+    fallback: "/images/client-family.jpg",
+    headlineLine1: "Happy Clients.",
+    headlineLine2: "Zero Power Bills.",
+    subline: "Real Andhra Pradesh homeowners in Darsi and Prakasam saving every month with rooftop solar.",
+    badge: "Real Installations Across Andhra Pradesh",
   },
   {
     image: "/images/hero-2.webp",
@@ -97,6 +106,9 @@ export function HeroSlideshow() {
         </motion.div>
       </AnimatePresence>
 
+      {/* Floating 3D Solar Photon Particle Ambient Energy Field */}
+      <SolarParticlesBackground />
+
       {/* Content Container */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -166,8 +178,13 @@ export function HeroSlideshow() {
               </Link>
             </motion.div>
 
-            {/* Mobile Key Fact Badges (Under CTAs on mobile only) */}
-            <div className="mt-8 pt-6 border-t border-white/10 flex lg:hidden items-center gap-2.5 overflow-x-auto no-scrollbar py-1">
+            {/* Mobile 3D Solar Model */}
+            <div className="mt-8 block lg:hidden">
+              <Hero3DSolarScene />
+            </div>
+
+            {/* Mobile Key Fact Badges (Under CTAs on mobile) */}
+            <div className="mt-6 pt-4 border-t border-white/10 flex lg:hidden items-center gap-2.5 overflow-x-auto no-scrollbar py-1">
               <div className="shrink-0 px-3.5 py-1.5 rounded-full bg-[#072A19]/90 border border-white/10 text-xs text-[#8CC63F] font-medium">
                 ₹66,000 / kW Complete
               </div>
@@ -180,52 +197,14 @@ export function HeroSlideshow() {
             </div>
           </div>
 
-          {/* Right Column: Balanced Floating Fact Card so right half is not empty (Rule C.5) */}
+          {/* Right Column: 3D Interactive Topcon Solar Scene (3D Wow Factor) */}
           <div className="hidden lg:block lg:col-span-5">
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="bg-[#072A19]/85 backdrop-blur-xl border border-[rgba(255,255,255,0.14)] rounded-[32px] p-8 text-white shadow-2xl relative overflow-hidden"
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div className="flex items-center gap-2.5 mb-6 pb-4 border-b border-[rgba(255,255,255,0.14)]">
-                <div className="w-9 h-9 rounded-xl bg-[#3F8F3A]/20 flex items-center justify-center text-[#8CC63F]">
-                  <Zap className="w-5 h-5 fill-current" />
-                </div>
-                <div>
-                  <h3 className="text-base font-medium font-heading text-white">
-                    PM Surya Ghar Authorised
-                  </h3>
-                  <span className="text-xs text-[#9DB3A5]">Andhra Pradesh Residential Solar</span>
-                </div>
-              </div>
-
-              <div className="space-y-4 text-xs sm:text-sm">
-                <div className="flex items-center justify-between p-3 rounded-2xl bg-[#04140C]/60 border border-[rgba(255,255,255,0.1)]">
-                  <span className="text-[#9DB3A5]">Turnkey EPC Rate:</span>
-                  <span className="font-semibold text-[#8CC63F]">₹66,000 / kW Complete</span>
-                </div>
-
-                <div className="flex items-center justify-between p-3 rounded-2xl bg-[#04140C]/60 border border-[rgba(255,255,255,0.1)]">
-                  <span className="text-[#9DB3A5]">Central Subsidy:</span>
-                  <span className="font-semibold text-[#8CC63F]">₹78,000 (≥ 3 kW)</span>
-                </div>
-
-                <div className="flex items-center justify-between p-3 rounded-2xl bg-[#04140C]/60 border border-[rgba(255,255,255,0.1)]">
-                  <span className="text-[#9DB3A5]">Bank Loan Rate:</span>
-                  <span className="font-semibold text-white">From 5.75% p.a. (up to ₹2 Lakh)</span>
-                </div>
-
-                <div className="flex items-center justify-between p-3 rounded-2xl bg-[#04140C]/60 border border-[rgba(255,255,255,0.1)]">
-                  <span className="text-[#9DB3A5]">Working Hours:</span>
-                  <span className="font-semibold text-white">Mon – Sat, 9 AM – 6 PM</span>
-                </div>
-              </div>
-
-              <div className="mt-6 pt-4 border-t border-[rgba(255,255,255,0.14)] flex items-center gap-2 text-xs text-[#9DB3A5]">
-                <CheckCircle2 className="w-4 h-4 text-[#8CC63F]" />
-                <span>Premium Topcon panels, inverters & structures</span>
-              </div>
+              <Hero3DSolarScene />
             </motion.div>
           </div>
         </div>

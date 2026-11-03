@@ -7,6 +7,7 @@ import { QualityFeatures } from "@/components/home/quality-features";
 import { StatTimeline } from "@/components/home/stat-timeline";
 import { PackageLineup } from "@/components/home/package-lineup";
 import { InstallationProcess } from "@/components/home/installation-process";
+import { ClientShowcase } from "@/components/home/client-showcase";
 import { FinanceTeaser } from "@/components/home/finance-teaser";
 import { UpdatesStrip } from "@/components/home/updates-strip";
 import { FaqAccordion } from "@/components/home/faq-accordion";
@@ -38,6 +39,9 @@ export default function HomePage() {
 
       {/* How Installation Works */}
       <InstallationProcess />
+
+      {/* Real Installations & Happy Clients Across Andhra Pradesh */}
+      <ClientShowcase />
 
       {/* Subsidy & Finance */}
       <FinanceTeaser />

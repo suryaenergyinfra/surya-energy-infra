@@ -46,7 +46,7 @@ export const siteConfig = {
     showPartners: false, // Mention "Topcon" as text only until logos are supplied
     hasBrochurePdf: false, // Set to true when PDF brochure is uploaded to /public/brochure.pdf
     brochurePdfUrl: "/brochure.pdf",
-    showGallery: false, // Set to true when client supplies real completed project photos (Rule B.5)
+    showGallery: true, // Client supplied authentic completed project photos in Darsi, Potha Varam, Rajampalli
   },
 
   // Banking & Subsidy Defaults (Client-provided facts only)
