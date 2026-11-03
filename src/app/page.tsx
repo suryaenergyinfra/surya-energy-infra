@@ -1,5 +1,5 @@
 import React from "react";
-import { HeroSlideshow } from "@/components/home/hero-slideshow";
+import { Hero } from "@/components/hero/Hero";
 import { StatementSection } from "@/components/home/statement-section";
 import { EmbeddedEstimator } from "@/components/calculator/embedded-estimator";
 import { PerformanceSplit } from "@/components/home/performance-split";
@@ -16,8 +16,8 @@ import { CtaBanner } from "@/components/home/cta-banner";
 export default function HomePage() {
   return (
     <>
-      {/* Hero Slideshow */}
-      <HeroSlideshow />
+      {/* 3D Scroll-Driven Sunrise on Your Roof Hero */}
+      <Hero />
 
       {/* FAERS-Style Big Statement with Watermark */}
       <StatementSection />

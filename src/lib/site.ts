@@ -47,6 +47,7 @@ export const siteConfig = {
     hasBrochurePdf: false, // Set to true when PDF brochure is uploaded to /public/brochure.pdf
     brochurePdfUrl: "/brochure.pdf",
     showGallery: true, // Client supplied authentic completed project photos in Darsi, Potha Varam, Rajampalli
+    // NOTE: /public/images/hero/* assets are AI-generated illustrative assets, NOT photos of the client's installations. Never caption them as real projects.
   },
 
   // Banking & Subsidy Defaults (Client-provided facts only)

@@ -124,9 +124,12 @@ All images currently in `/public/images/` are AI-generated temporary placeholder
 
 | Category | File Path | Description | Recommended Dimensions |
 |---|---|---|---|
-| **Hero Slideshow** | `/public/images/hero-1.webp` | Real rooftop solar installation on an Andhra Pradesh home | 1920 × 1080 |
-| **Hero Slideshow** | `/public/images/hero-2.webp` | Topcon solar panels on residential terrace at sunrise | 1920 × 1080 |
-| **Hero Slideshow** | `/public/images/hero-3.webp` | Finished modern home with clean on-grid solar array | 1920 × 1080 |
+| **Hero 3D Sunrise Sky (Dawn)** | `/public/images/hero/sky-dawn.webp` & `sky-dawn-m.webp` | Wide and mobile pre-dawn sky with Indian rooftop silhouette | 2400 × 1350 & 1080 × 1920 |
+| **Hero 3D Sunrise Sky (Midday)** | `/public/images/hero/sky-midday.webp` & `sky-midday-m.webp` | Bright morning/midday sky with soft clouds and rooftop silhouettes | 2400 × 1350 & 1080 × 1920 |
+| **Hero 3D Sunrise Sky (Golden)** | `/public/images/hero/sky-golden.webp` & `sky-golden-m.webp` | Golden hour sky with dramatic clouds and warm horizon glow | 2400 × 1350 & 1080 × 1920 |
+| **Hero 3D House Reference & Static Fallback** | `/public/images/hero/house-ref.webp` | Isometric stylised Indian home with 8-panel solar array for WebGL fallback | 1600 × 1200 |
+| **Hero Sun Texture** | `/public/images/hero/sun-orb.png` | Leaf-green gradient glowing sun sprite with leaf contour | 1024 × 1024 (PNG) |
+| **Hero Film Grain** | `/public/images/hero/grain.png` | Subtle 6% tileable noise texture for sky plates | 512 × 512 |
 | **Stat Timeline** | `/public/images/hero-1.webp` to `hero-3.webp`, `about-hero.webp` | Rotating background imagery behind the 01–04 timeline | 1920 × 1080 |
 | **Component Features** | `/public/images/feature-topcon.webp` | Closeup of actual Topcon solar panels | 1200 × 800 |
 | **Component Features** | `/public/images/feature-inverter.webp` | On-grid solar inverter and electrical switchgear | 1200 × 800 |
