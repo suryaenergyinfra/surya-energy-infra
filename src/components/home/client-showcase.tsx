@@ -1,9 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
-import { MapPin, ShieldCheck, Zap, ArrowRight, MessageSquare, CheckCircle2 } from "lucide-react";
+import { MapPin, ShieldCheck, Zap, ArrowRight, MessageSquare, CheckCircle2, Camera } from "lucide-react";
 import { useWhatsAppModal } from "@/components/ui/whatsapp-modal-context";
 import { siteConfig } from "@/lib/site";
 
@@ -65,19 +65,39 @@ const CLIENT_PROJECTS: ClientProject[] = [
     highlight: "High Wind-Resistant Mounts",
   },
   {
+    id: "rajampalli-2",
+    location: "Rajampalli",
+    district: "Prakasam District, Andhra Pradesh",
+    systemSize: "3 kW Terrace Solar Plant",
+    image: "/images/raw-installation-rajampalli-2.jpg",
+    rawImage: "/images/raw-installation-rajampalli-2.jpg",
+    tag: "Net Metered",
+    summary: "Rooftop solar plant directly connected to AP Discom net-metering grid. 10-year bank loan EMI only ₹1,317/month.",
+    highlight: "10-Yr EMI ₹1,317/mo",
+  },
+  {
     id: "family-1",
     location: "Andhra Pradesh",
     district: "Residential Homeowner",
     systemSize: "3 kW Beneficiary Household",
     image: "/images/client-family.jpg",
     tag: "Clean Energy Home",
-    summary: "Financed through nationalised bank low-interest solar scheme with ₹78,000 central government grant.",
-    highlight: "5.75% Bank Loan Rate",
+    summary: "Financed through nationalised bank 10-year low-interest solar scheme with ₹78,000 central government grant.",
+    highlight: "10-Year Loan Available",
   },
 ];
 
 export function ClientShowcase() {
   const { openEnquiryModal } = useWhatsAppModal();
+  // Track toggle state for raw geotag photos
+  const [photoModes, setPhotoModes] = useState<Record<string, "hd" | "geotag">>({});
+
+  const togglePhotoMode = (id: string) => {
+    setPhotoModes((prev) => ({
+      ...prev,
+      [id]: prev[id] === "geotag" ? "hd" : "geotag",
+    }));
+  };
 
   return (
     <section className="bg-[#F1F8EC] py-20 lg:py-28 text-[#06180F] border-b border-[#D5E6CC] relative overflow-hidden">
@@ -118,84 +138,102 @@ export function ClientShowcase() {
 
         {/* Client Installation Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {CLIENT_PROJECTS.map((project, idx) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="group bg-white rounded-[28px] border border-[#D5E6CC] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col"
-            >
-              {/* Photo Frame */}
-              <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#072A19]/10">
-                <Image
-                  src={project.image}
-                  alt={`${project.systemSize} in ${project.location}`}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                />
+          {CLIENT_PROJECTS.map((project, idx) => {
+            const isGeotag = photoModes[project.id] === "geotag" && !!project.rawImage;
+            const currentSrc = isGeotag && project.rawImage ? project.rawImage : project.image;
 
-                {/* Location Badge Overlay */}
-                <div className="absolute top-3.5 left-3.5 z-10 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#04140C]/85 backdrop-blur-md text-white border border-white/20 text-xs font-medium">
-                  <MapPin className="w-3 h-3 text-[#8CC63F]" />
-                  <span>{project.location}, AP</span>
-                </div>
+            return (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="group bg-white rounded-[28px] border border-[#D5E6CC] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col"
+              >
+                {/* Photo Frame */}
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#072A19]/10">
+                  <Image
+                    src={currentSrc}
+                    alt={`${project.systemSize} in ${project.location}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  />
 
-                {/* Highlight Badge */}
-                <div className="absolute bottom-3.5 left-3.5 z-10 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#8CC63F] text-[#04140C] text-xs font-semibold shadow-md">
-                  <Zap className="w-3 h-3 fill-current" />
-                  <span>{project.highlight}</span>
-                </div>
-              </div>
-
-              {/* Card Body */}
-              <div className="p-6 flex-1 flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="text-xs uppercase tracking-wider font-semibold text-[#0B4A2B] bg-[#F1F8EC] px-2.5 py-0.5 rounded-full border border-[#D5E6CC]">
-                      {project.tag}
-                    </span>
-                    <span className="text-xs text-[#06180F]/60 flex items-center gap-1">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#3F8F3A]" />
-                      <span>AP Discom Net Metered</span>
-                    </span>
+                  {/* Location Badge Overlay */}
+                  <div className="absolute top-3.5 left-3.5 z-10 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#04140C]/85 backdrop-blur-md text-white border border-white/20 text-xs font-medium">
+                    <MapPin className="w-3 h-3 text-[#8CC63F]" />
+                    <span>{project.location}, AP</span>
                   </div>
 
-                  <h3 className="text-xl font-medium font-heading text-[#06180F] tracking-tight mb-2">
-                    {project.systemSize}
-                  </h3>
+                  {/* Interactive Geotag Photo Switcher if rawImage exists */}
+                  {project.rawImage && (
+                    <button
+                      type="button"
+                      onClick={() => togglePhotoMode(project.id)}
+                      className="absolute top-3.5 right-3.5 z-10 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#04140C]/85 hover:bg-[#072A19] backdrop-blur-md text-white border border-white/20 text-[10px] font-medium transition-all shadow-md cursor-pointer"
+                      title="Toggle genuine WhatsApp camera photo with Google location stamp"
+                    >
+                      <Camera className="w-3 h-3 text-[#8CC63F]" />
+                      <span>{isGeotag ? "Show HD View" : "View AP Geotag Stamp"}</span>
+                    </button>
+                  )}
 
-                  <p className="text-xs sm:text-sm text-[#06180F]/70 leading-relaxed mb-4">
-                    {project.summary}
-                  </p>
+                  {/* Highlight Badge */}
+                  <div className="absolute bottom-3.5 left-3.5 z-10 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#8CC63F] text-[#04140C] text-xs font-semibold shadow-md">
+                    <Zap className="w-3 h-3 fill-current" />
+                    <span>{project.highlight}</span>
+                  </div>
                 </div>
 
-                {/* Card Action */}
-                <div className="pt-4 border-t border-[#D5E6CC]/70 flex items-center justify-between gap-2 mt-auto">
-                  <span className="text-xs font-mono text-[#06180F]/60 truncate">
-                    {project.district}
-                  </span>
+                {/* Card Body */}
+                <div className="p-6 flex-1 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <span className="text-xs uppercase tracking-wider font-semibold text-[#0B4A2B] bg-[#F1F8EC] px-2.5 py-0.5 rounded-full border border-[#D5E6CC]">
+                        {project.tag}
+                      </span>
+                      <span className="text-xs text-[#06180F]/60 flex items-center gap-1">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#3F8F3A]" />
+                        <span>AP Discom Net Metered</span>
+                      </span>
+                    </div>
 
-                  <button
-                    type="button"
-                    onClick={() =>
-                      openEnquiryModal({
-                        title: `Solar Enquiry for ${project.location}`,
-                        defaultRequirement: project.systemSize,
-                        defaultNotes: `Interested in a system similar to the ${project.location} installation (${project.systemSize}). Please provide details for my location.`,
-                      })
-                    }
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#F1F8EC] hover:bg-[#0B4A2B] text-[#0B4A2B] hover:text-white border border-[#D5E6CC] text-xs font-medium transition-all shrink-0 cursor-pointer"
-                  >
-                    <MessageSquare className="w-3 h-3" />
-                    <span>Enquire</span>
-                  </button>
+                    <h3 className="text-xl font-medium font-heading text-[#06180F] tracking-tight mb-2">
+                      {project.systemSize}
+                    </h3>
+
+                    <p className="text-xs sm:text-sm text-[#06180F]/70 leading-relaxed mb-4">
+                      {project.summary}
+                    </p>
+                  </div>
+
+                  {/* Card Action */}
+                  <div className="pt-4 border-t border-[#D5E6CC]/70 flex items-center justify-between gap-2 mt-auto">
+                    <span className="text-xs font-mono text-[#06180F]/60 truncate">
+                      {project.district}
+                    </span>
+
+                    <button
+                      type="button"
+                      onClick={() =>
+                        openEnquiryModal({
+                          title: `Solar Enquiry for ${project.location}`,
+                          defaultRequirement: project.systemSize,
+                          defaultNotes: `Interested in a system similar to the ${project.location} installation (${project.systemSize}). Please provide details for my location.`,
+                        })
+                      }
+                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#F1F8EC] hover:bg-[#0B4A2B] text-[#0B4A2B] hover:text-white border border-[#D5E6CC] text-xs font-medium transition-all shrink-0 cursor-pointer"
+                    >
+                      <MessageSquare className="w-3 h-3" />
+                      <span>Enquire</span>
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* Bottom Proof Trust Banner */}
