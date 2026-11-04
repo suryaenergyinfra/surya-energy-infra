@@ -8,6 +8,7 @@ import { StatTimeline } from "@/components/home/stat-timeline";
 import { PackageLineup } from "@/components/home/package-lineup";
 import { InstallationProcess } from "@/components/home/installation-process";
 import { ClientShowcase } from "@/components/home/client-showcase";
+import { SolarVsGridComparison } from "@/components/home/solar-vs-grid-comparison";
 import { FinanceTeaser } from "@/components/home/finance-teaser";
 import { UpdatesStrip } from "@/components/home/updates-strip";
 import { FaqAccordion } from "@/components/home/faq-accordion";
@@ -42,6 +43,9 @@ export default function HomePage() {
 
       {/* Real Installations & Happy Clients Across Andhra Pradesh */}
       <ClientShowcase />
+
+      {/* Smart Comparison: Electricity Bill vs. Owning Rooftop Solar (Top EPC Benchmark) */}
+      <SolarVsGridComparison />
 
       {/* Subsidy & Finance */}
       <FinanceTeaser />

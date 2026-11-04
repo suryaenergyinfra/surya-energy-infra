@@ -14,9 +14,10 @@ export interface SolarPackage {
   grossCost: number;
   subsidy: number;
   netCost: number;
+  tenure10YrEmi: number; // Monthly EMI on 10-year loan tenure
 }
 
-// Client fact sizing table (3 kW to 10 kW) - no appliance claims per Rule B.4
+// Client fact sizing table (3 kW to 10 kW) with 10-year loan tenure EMIs
 export const SOLAR_PACKAGES: SolarPackage[] = [
   {
     kw: 3,
@@ -26,6 +27,7 @@ export const SOLAR_PACKAGES: SolarPackage[] = [
     grossCost: 3 * PRICE_PER_KW, // ₹1,98,000
     subsidy: FLAT_SUBSIDY_3KW_PLUS, // ₹78,000
     netCost: 3 * PRICE_PER_KW - FLAT_SUBSIDY_3KW_PLUS, // ₹1,20,000
+    tenure10YrEmi: 1317, // ₹1,317/mo @ 5.75% for 10 yrs
   },
   {
     kw: 4,
@@ -35,6 +37,7 @@ export const SOLAR_PACKAGES: SolarPackage[] = [
     grossCost: 4 * PRICE_PER_KW, // ₹2,64,000
     subsidy: FLAT_SUBSIDY_3KW_PLUS,
     netCost: 4 * PRICE_PER_KW - FLAT_SUBSIDY_3KW_PLUS, // ₹1,86,000
+    tenure10YrEmi: 2042, // ₹2,042/mo @ 5.75% for 10 yrs
   },
   {
     kw: 5,
@@ -44,6 +47,7 @@ export const SOLAR_PACKAGES: SolarPackage[] = [
     grossCost: 5 * PRICE_PER_KW, // ₹3,30,000
     subsidy: FLAT_SUBSIDY_3KW_PLUS,
     netCost: 5 * PRICE_PER_KW - FLAT_SUBSIDY_3KW_PLUS, // ₹2,52,000
+    tenure10YrEmi: 3057, // ₹3,057/mo for 10 yrs
   },
   {
     kw: 6,
@@ -53,6 +57,7 @@ export const SOLAR_PACKAGES: SolarPackage[] = [
     grossCost: 6 * PRICE_PER_KW, // ₹3,96,000
     subsidy: FLAT_SUBSIDY_3KW_PLUS,
     netCost: 6 * PRICE_PER_KW - FLAT_SUBSIDY_3KW_PLUS, // ₹3,18,000
+    tenure10YrEmi: 3858, // ₹3,858/mo for 10 yrs
   },
   {
     kw: 7,
@@ -62,6 +67,7 @@ export const SOLAR_PACKAGES: SolarPackage[] = [
     grossCost: 7 * PRICE_PER_KW, // ₹4,62,000
     subsidy: FLAT_SUBSIDY_3KW_PLUS,
     netCost: 7 * PRICE_PER_KW - FLAT_SUBSIDY_3KW_PLUS, // ₹3,84,000
+    tenure10YrEmi: 4659, // ₹4,659/mo for 10 yrs
   },
   {
     kw: 8,
@@ -71,6 +77,7 @@ export const SOLAR_PACKAGES: SolarPackage[] = [
     grossCost: 8 * PRICE_PER_KW, // ₹5,28,000
     subsidy: FLAT_SUBSIDY_3KW_PLUS,
     netCost: 8 * PRICE_PER_KW - FLAT_SUBSIDY_3KW_PLUS, // ₹4,50,000
+    tenure10YrEmi: 5460, // ₹5,460/mo for 10 yrs
   },
   {
     kw: 9,
@@ -80,6 +87,7 @@ export const SOLAR_PACKAGES: SolarPackage[] = [
     grossCost: 9 * PRICE_PER_KW, // ₹5,94,000
     subsidy: FLAT_SUBSIDY_3KW_PLUS,
     netCost: 9 * PRICE_PER_KW - FLAT_SUBSIDY_3KW_PLUS, // ₹5,16,000
+    tenure10YrEmi: 6260, // ₹6,260/mo for 10 yrs
   },
   {
     kw: 10,
@@ -89,6 +97,7 @@ export const SOLAR_PACKAGES: SolarPackage[] = [
     grossCost: 10 * PRICE_PER_KW, // ₹6,60,000
     subsidy: FLAT_SUBSIDY_3KW_PLUS,
     netCost: 10 * PRICE_PER_KW - FLAT_SUBSIDY_3KW_PLUS, // ₹5,82,000
+    tenure10YrEmi: 7061, // ₹7,061/mo for 10 yrs
   },
 ];
 
@@ -186,8 +195,8 @@ export const STAT_TIMELINE = [
     numericValue: 5.75,
     prefix: "",
     suffix: "% p.a.",
-    label: "loans up to ₹2 lakh",
-    subtext: "Subsidised floating rate from major public sector banks for PM Surya Ghar.",
+    label: "10-year bank loans from 5.75%",
+    subtext: "Subsidised floating rate from major public sector banks for PM Surya Ghar with flexible tenures up to 10 years (120 months).",
     // PLACEHOLDER: replace with client's real photo
     image: "/images/hero-3.webp",
   },
@@ -297,9 +306,19 @@ export const FAQ_ITEMS = [
       "No. For safety reasons, on-grid inverters automatically shut down during a utility power outage to prevent electricity from feeding into the grid while utility crews may be working.",
   },
   {
-    question: "What bank loan interest rates are available?",
+    question: "What bank loan interest rates and tenures are available?",
     answer:
-      "Most major public sector banks offer a subsidised floating rate of 5.75% p.a. for PM Surya Ghar loans up to ₹2 lakh. For larger systems (4 kW to 10 kW) where the loan exceeds ₹2 lakh, the rate is typically 7.25%–9.50% depending on the bank and customer CIBIL score.",
+      "Most major public sector banks (SBI, Canara Bank, Union Bank, Bank of Baroda, PNB) offer a subsidised floating rate of 5.75% p.a. for PM Surya Ghar loans up to ₹2 lakh, with flexible repayment tenures up to 10 years (120 months). For larger systems where the loan exceeds ₹2 lakh, the rate is 7.25%–9.50% depending on the bank and customer CIBIL score. Collateral-free financing is available for residential rooftop solar.",
+  },
+  {
+    question: "Will my monthly power bill savings cover my 10-year bank loan EMI?",
+    answer:
+      "Yes! Because tenures extend up to 10 years (120 months), the monthly EMI for a 3 kW system is only ~₹1,317/month, while generating ~375–400 units of electricity worth ₹2,800–₹3,200 every month. That means your monthly power bill savings exceed the bank loan EMI from Month 1, providing immediate positive cash flow.",
+  },
+  {
+    question: "How does Net-Metering work with Andhra Pradesh DISCOMs (APCPDCL / APSPDCL)?",
+    answer:
+      "Surya Energy Infra handles 100% of the liaisoning with your local Andhra Pradesh DISCOM (CPDCL, SPDCL, or EPDCL). A bi-directional digital net meter is installed at your home. When your solar system generates more electricity than your home consumes during peak daylight hours, the excess units are exported to the grid and credited against your night-time consumption.",
   },
   {
     question: "What routine maintenance is required for residential rooftop solar?",

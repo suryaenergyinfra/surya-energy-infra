@@ -18,7 +18,7 @@ import {
 export default function SubsidyFinancePage() {
   const { openEnquiryModal } = useWhatsAppModal();
   const [loanAmount, setLoanAmount] = useState<number>(120000); // 3 kW net cost
-  const [tenureYears, setTenureYears] = useState<number>(5);
+  const [tenureYears, setTenureYears] = useState<number>(10);
   const [above2LakhRate, setAbove2LakhRate] = useState<number>(siteConfig.finance.standardRateAbove2LakhDefault); // Default 8.0% (Rule C.9)
 
   // Rate logic per Rule C.9: ≤ ₹2 Lakh uses 5.75%; > ₹2 Lakh uses 7.25%-9.50% selector
@@ -109,7 +109,7 @@ export default function SubsidyFinancePage() {
               </li>
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-[#3F8F3A]" />
-                <span>Flexible tenures up to 7 years with public sector banks</span>
+                <span>Flexible tenures up to 10 years (120 months) with public sector banks</span>
               </li>
             </ul>
           </div>
@@ -197,11 +197,14 @@ export default function SubsidyFinancePage() {
                 )}
               </div>
 
-              {/* Tenure Selection */}
+              {/* Tenure Selection with 10 Years */}
               <div>
-                <label className="text-xs sm:text-sm text-[#06180F]/70 block mb-2 font-medium">Loan Tenure:</label>
+                <div className="flex justify-between items-center mb-2">
+                  <label className="text-xs sm:text-sm text-[#06180F]/70 font-medium">Loan Tenure:</label>
+                  <span className="text-xs text-[#3F8F3A] font-semibold">Up to 10 Years (120 Months)</span>
+                </div>
                 <div className="grid grid-cols-4 gap-2">
-                  {[3, 4, 5, 7].map((yr) => (
+                  {[3, 5, 7, 10].map((yr) => (
                     <button
                       key={yr}
                       onClick={() => setTenureYears(yr)}

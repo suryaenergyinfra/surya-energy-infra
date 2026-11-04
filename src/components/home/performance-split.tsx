@@ -32,10 +32,10 @@ const SPLIT_SLIDES = [
   },
   {
     step: "03",
-    label: "Low-Interest Loan",
+    label: "10-Year Bank Loans",
     metric: "5.75%",
-    unit: "p.a. Bank Loans",
-    subtext: "Subsidised floating interest rates from public sector banks for loans up to ₹2 Lakh. Transparent guidance for application and documentation.",
+    unit: "p.a. · Up to 10 Yrs",
+    subtext: "Subsidised floating rates from public sector banks with flexible tenures up to 10 years (120 months) for PM Surya Ghar loans up to ₹2 Lakh. Low monthly EMI with zero collateral.",
     cta: "Explore Financing",
     href: "/subsidy-finance",
     image: "/images/hero-2.webp",

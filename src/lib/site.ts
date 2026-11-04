@@ -57,6 +57,8 @@ export const siteConfig = {
     standardRateAbove2LakhMax: 9.5, // 9.50% p.a. (depends on bank and CIBIL score)
     standardRateAbove2LakhDefault: 8.0, // Default 8.0% per Rule C.9
     maxSubsidizedLoanAmount: 200000,
+    maxTenureYears: 10, // Up to 10 years (120 months) tenure under PM Surya Ghar
+    tenureOptions: [3, 5, 7, 10], // Flexible loan tenures in years
   },
 
   // Credits

@@ -30,7 +30,7 @@ export default function CalculatorPage() {
   const [generationTimeframe, setGenerationTimeframe] = useState<"daily" | "monthly" | "annual">("monthly");
 
   // Finance state (Rule C.9)
-  const [tenureYears, setTenureYears] = useState<number>(5);
+  const [tenureYears, setTenureYears] = useState<number>(10);
   const [above2LakhRate, setAbove2LakhRate] = useState<number>(siteConfig.finance.standardRateAbove2LakhDefault); // Default 8.0%
 
   // Compute effective units if bill mode
@@ -274,11 +274,14 @@ export default function CalculatorPage() {
                 </div>
               )}
 
-              {/* Tenure Selection */}
+              {/* Tenure Selection with 10 Years */}
               <div>
-                <label className="text-xs text-[#06180F]/70 block mb-2 font-medium">Loan Tenure:</label>
+                <div className="flex justify-between items-center mb-2">
+                  <label className="text-xs text-[#06180F]/70 font-medium">Loan Tenure:</label>
+                  <span className="text-[11px] text-[#3F8F3A] font-semibold">Up to 10 Yrs Available</span>
+                </div>
                 <div className="grid grid-cols-4 gap-2">
-                  {[3, 4, 5, 7].map((yr) => (
+                  {[3, 5, 7, 10].map((yr) => (
                     <button
                       key={yr}
                       onClick={() => setTenureYears(yr)}

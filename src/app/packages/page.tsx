@@ -98,7 +98,7 @@ export default function PackagesPage() {
                   </div>
                 </div>
 
-                {/* Net Cost in brand-deep (Rule A.2) */}
+                {/* Net Cost in brand-deep (Rule A.2) & 10-Yr Loan EMI */}
                 <div className="mb-6">
                   <span className="text-[10px] uppercase tracking-wider text-[#06180F]/60 block mb-0.5 font-mono">
                     Net Investment
@@ -106,7 +106,10 @@ export default function PackagesPage() {
                   <div className="text-2xl sm:text-3xl font-medium font-heading text-[#0B4A2B] tracking-[-0.03em]">
                     {formatINR(pkg.netCost)}
                   </div>
-                  <span className="text-[11px] text-[#3F8F3A] font-medium">Turnkey Complete EPC</span>
+                  <div className="flex items-center justify-between text-[11px] mt-1.5 pt-1.5 border-t border-[#D5E6CC]/70">
+                    <span className="text-[#06180F]/70">10-Yr Bank EMI:</span>
+                    <span className="font-semibold text-[#0B4A2B]">From {formatINR(pkg.tenure10YrEmi)}/mo</span>
+                  </div>
                 </div>
               </div>
 
@@ -150,6 +153,7 @@ export default function PackagesPage() {
                   <th className="py-4 px-3">Gross Cost</th>
                   <th className="py-4 px-3">Subsidy</th>
                   <th className="py-4 px-3 font-semibold text-[#0B4A2B]">Net Investment</th>
+                  <th className="py-4 px-3 font-semibold text-[#0B4A2B]">10-Yr Bank EMI</th>
                   <th className="py-4 px-3 text-right">Action</th>
                 </tr>
               </thead>
@@ -165,6 +169,9 @@ export default function PackagesPage() {
                     <td className="py-4 px-3 text-[#3F8F3A] font-semibold">- {formatINR(p.subsidy)}</td>
                     <td className="py-4 px-3 font-medium text-base sm:text-lg text-[#0B4A2B] font-heading">
                       {formatINR(p.netCost)}
+                    </td>
+                    <td className="py-4 px-3 text-sm text-[#0B4A2B] font-semibold">
+                      {formatINR(p.tenure10YrEmi)}/mo
                     </td>
                     <td className="py-4 px-3 text-right">
                       <PackageEnquiryButton pkg={p} variant="table" />

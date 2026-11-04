@@ -8,7 +8,7 @@ import { Landmark, ShieldCheck, CheckCircle2, Calculator, ArrowRight } from "luc
 
 export function FinanceTeaser() {
   const [loanAmount, setLoanAmount] = useState<number>(120000);
-  const [tenureYears, setTenureYears] = useState<number>(5);
+  const [tenureYears, setTenureYears] = useState<number>(10);
   const [above2LakhRate, setAbove2LakhRate] = useState<number>(siteConfig.finance.standardRateAbove2LakhDefault); // Default 8.0% (Rule C.9)
 
   // Rate logic per Rule C.9
@@ -29,10 +29,10 @@ export function FinanceTeaser() {
               Subsidy & Financing
             </span>
             <h2 className="text-3xl sm:text-5xl font-medium font-heading text-[#06180F] tracking-[-0.03em] mb-6">
-              Up to ₹78,000 Subsidy & 5.75% Bank Loans
+              Up to ₹78,000 Subsidy & 10-Year Bank Loans
             </h2>
             <p className="text-sm sm:text-base text-[#06180F]/70 mb-8 leading-relaxed font-normal">
-              Under the PM Surya Ghar: Muft Bijli Yojana, residential systems of 3 kW and higher receive a fixed ₹78,000 central subsidy. Most major public sector banks offer loans starting from 5.75% p.a. floating.
+              Under the PM Surya Ghar: Muft Bijli Yojana, residential systems of 3 kW and higher receive a fixed ₹78,000 central subsidy. Major public sector banks offer loans starting from 5.75% p.a. floating with tenures up to 10 years (120 months).
             </p>
 
             <div className="space-y-4 mb-8">
@@ -55,7 +55,7 @@ export function FinanceTeaser() {
                     5.75% p.a. Floating Rate for Loans up to ₹2 Lakh
                   </h3>
                   <p className="text-xs sm:text-sm text-[#06180F]/70">
-                    Offered by major public sector banks for PM Surya Ghar loans up to ₹2,00,000.
+                    Offered by major public sector banks for PM Surya Ghar loans up to ₹2,00,000 with zero collateral.
                   </p>
                 </div>
               </div>
@@ -64,10 +64,10 @@ export function FinanceTeaser() {
                 <CheckCircle2 className="w-5 h-5 text-[#3F8F3A] shrink-0 mt-0.5" />
                 <div>
                   <h3 className="text-base font-medium text-[#06180F] font-heading">
-                    7.25% – 9.50% for Loans Exceeding ₹2 Lakh
+                    Up to 10 Years Flexible Tenure (120 Months)
                   </h3>
                   <p className="text-xs sm:text-sm text-[#06180F]/70">
-                    For systems where loan exceeds ₹2 Lakh, rate depends on the bank and customer CIBIL score.
+                    Longer 10-year repayment keeps your monthly EMI as low as ₹1,317/mo — often less than your current electricity bill!
                   </p>
                 </div>
               </div>
@@ -158,19 +158,22 @@ export function FinanceTeaser() {
               </div>
             )}
 
-            {/* Tenure Buttons */}
+            {/* Tenure Buttons with 10 Years */}
             <div className="mb-6">
-              <label className="text-xs sm:text-sm text-[#06180F]/70 block mb-2 font-medium">
-                Loan Tenure:
-              </label>
+              <div className="flex justify-between items-center mb-2">
+                <label className="text-xs sm:text-sm text-[#06180F]/70 font-medium">
+                  Loan Tenure:
+                </label>
+                <span className="text-xs text-[#3F8F3A] font-semibold">Up to 10 Years Available</span>
+              </div>
               <div className="grid grid-cols-4 gap-2">
-                {[3, 4, 5, 7].map((yr) => (
+                {[3, 5, 7, 10].map((yr) => (
                   <button
                     key={yr}
                     onClick={() => setTenureYears(yr)}
                     className={`py-2 px-3 rounded-full text-xs font-medium transition-colors cursor-pointer ${
                       tenureYears === yr
-                        ? "bg-[#0B4A2B] text-white shadow-sm"
+                        ? "bg-[#0B4A2B] text-white shadow-sm font-semibold"
                         : "bg-white border border-[#D5E6CC] text-[#06180F] hover:bg-white/80"
                     }`}
                   >
@@ -188,9 +191,14 @@ export function FinanceTeaser() {
               <div className="text-3xl sm:text-4xl font-medium font-heading text-[#0B4A2B] mb-1 tracking-[-0.03em]">
                 {formatINR(emi)} <span className="text-xs font-normal text-[#06180F]/60">/ month</span>
               </div>
-              <span className="text-xs text-[#06180F]/60">
-                Applied rate: {interestRate}% p.a. ({isAbove2Lakh ? "Depends on bank & CIBIL score" : "Subsidised floating"})
+              <span className="text-xs text-[#06180F]/60 block mb-2">
+                Applied rate: {interestRate}% p.a. • {tenureYears} Years ({tenureYears * 12} Months)
               </span>
+              {tenureYears === 10 && loanAmount <= 200000 && (
+                <div className="mt-2 py-1 px-2.5 rounded-lg bg-[#F1F8EC] border border-[#D5E6CC] text-[11px] text-[#0B4A2B] font-medium">
+                  💡 Zero Out-of-Pocket: Monthly solar generation savings typically exceed this ₹{emi.toLocaleString("en-IN")}/mo EMI!
+                </div>
+              )}
             </div>
 
             <Link

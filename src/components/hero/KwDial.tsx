@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { PRICE_PER_KW, FLAT_SUBSIDY_3KW_PLUS, formatINR } from "@/lib/data";
+import { PRICE_PER_KW, FLAT_SUBSIDY_3KW_PLUS, formatINR, calculateEMI } from "@/lib/data";
 import { ArrowUpRight } from "lucide-react";
 
 interface KwDialProps {
@@ -17,6 +17,7 @@ export function KwDial({ selectedKw, onSelectKw, className = "" }: KwDialProps) 
   const grossCost = selectedKw * PRICE_PER_KW;
   const subsidy = selectedKw >= 3 ? FLAT_SUBSIDY_3KW_PLUS : 0;
   const netCost = grossCost - subsidy;
+  const emi10Yr = selectedKw <= 4 ? calculateEMI(netCost, 5.75, 10) : calculateEMI(netCost, 8.0, 10);
 
   // Desktop Magnetic Hover (up to 6px)
   const handleMagneticMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -68,15 +69,16 @@ export function KwDial({ selectedKw, onSelectKw, className = "" }: KwDialProps) 
       {/* Live Net Cost Label & Package Link */}
       <Link
         href="/packages"
-        aria-label={`View ${selectedKw} kW package details, ${formatINR(netCost)} net after subsidy`}
+        aria-label={`View ${selectedKw} kW package details, ${formatINR(netCost)} net after subsidy, 10-year EMI from ${formatINR(emi10Yr)} per month`}
         className="group flex items-center justify-between sm:justify-start gap-1.5 px-3 py-1 text-[11px] sm:text-xs text-[#9DB3A5] hover:text-white transition-colors cursor-pointer"
       >
         <span>
           <strong className="text-white font-semibold">{selectedKw} kW</strong> ·{" "}
-          <span className="text-[#8CC63F] font-semibold">{formatINR(netCost)}</span> net
+          <span className="text-[#8CC63F] font-semibold">{formatINR(netCost)}</span> net · EMI from{" "}
+          <span className="text-white font-medium">{formatINR(emi10Yr)}/mo</span>
         </span>
-        <span className="text-[10px] text-[#8CC63F] font-medium flex items-center gap-0.5">
-          View details
+        <span className="text-[10px] text-[#8CC63F] font-medium flex items-center gap-0.5 ml-1">
+          Details
           <ArrowUpRight className="w-3 h-3 text-[#8CC63F] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </span>
       </Link>
