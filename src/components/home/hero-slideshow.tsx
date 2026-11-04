@@ -21,9 +21,9 @@ const HERO_SLIDES = [
     image: "/images/hero-3.webp",
     fallback: "/images/hero-3.jpg",
     headlineLine1: "₹78,000 Subsidy.",
-    headlineLine2: "10-Year Bank Loans.",
-    subline: "Public sector bank loans up to 10 years (120 months) from 5.75% p.a. Monthly solar savings exceed the EMI from Day 1.",
-    badge: "10-Year Public Sector Bank Loans",
+    headlineLine2: "Optional 10-Yr Loans.",
+    subline: "Bank loans are 100% optional (just for info). Pay upfront or choose 10-year bank financing from ₹1,317/mo.",
+    badge: "Optional 10-Year Public Sector Bank Loans",
   },
   {
     image: "/images/client-family.jpg",

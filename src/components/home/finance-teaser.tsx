@@ -71,6 +71,18 @@ export function FinanceTeaser() {
                   </p>
                 </div>
               </div>
+
+              <div className="flex items-start gap-3 bg-white/80 p-3.5 rounded-2xl border border-[#D5E6CC]">
+                <ShieldCheck className="w-5 h-5 text-[#3F8F3A] shrink-0 mt-0.5" />
+                <div>
+                  <h3 className="text-sm font-semibold text-[#0B4A2B] font-heading">
+                    Bank Loan is Completely Optional (Just for Info)
+                  </h3>
+                  <p className="text-xs text-[#06180F]/70">
+                    Taking a bank loan is NOT mandatory. Homeowners can pay the turnkey EPC amount directly upfront and still receive the full ₹78,000 subsidy. Loan details are provided for customer information and planning.
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* Rule A.1: on light sections use brand-deep with white text */}

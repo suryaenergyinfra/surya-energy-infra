@@ -230,10 +230,14 @@ export default function CalculatorPage() {
 
             {/* Bank Loan Selector Card (Rule C.9) */}
             <div className="bg-[#F1F8EC] border border-[#D5E6CC] rounded-[28px] p-6 sm:p-8 shadow-sm">
-              <h2 className="text-lg font-medium font-heading text-[#06180F] mb-4 flex items-center gap-2">
+              <h2 className="text-lg font-medium font-heading text-[#06180F] mb-2 flex items-center gap-2">
                 <Building className="w-5 h-5 text-[#3F8F3A]" />
-                2. Bank Financing Terms
+                2. Optional Bank Financing Terms
               </h2>
+
+              <div className="mb-4 px-3 py-1.5 rounded-lg bg-white/80 border border-[#D5E6CC] text-[11px] text-[#0B4A2B] font-medium">
+                * Bank loans are 100% optional (just for info). Upfront payment is accepted with full direct subsidy credit.
+              </div>
 
               <p className="text-xs text-[#06180F]/70 mb-5 leading-relaxed">
                 {isAbove2Lakh

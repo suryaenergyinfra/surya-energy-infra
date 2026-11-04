@@ -142,9 +142,12 @@ export function SolarVsGridComparison() {
             <div className="relative z-10 mt-8 pt-6 border-t border-white/15">
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div>
-                  <span className="text-xs text-[#9DB3A5] block">10-Yr Bank EMI starts from:</span>
+                  <span className="text-xs text-[#9DB3A5] block">Optional 10-Yr EMI starts from:</span>
                   <span className="text-2xl font-medium font-heading text-[#8CC63F]">
                     ₹1,317 <span className="text-xs text-white/70 font-sans">/ month (3 kW)</span>
+                  </span>
+                  <span className="text-[10px] text-[#8CC63F]/90 block font-mono mt-0.5">
+                    * Loan is completely optional (for info) · Upfront payment accepted
                   </span>
                 </div>
 

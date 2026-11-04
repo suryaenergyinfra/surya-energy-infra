@@ -107,8 +107,11 @@ export default function PackagesPage() {
                     {formatINR(pkg.netCost)}
                   </div>
                   <div className="flex items-center justify-between text-[11px] mt-1.5 pt-1.5 border-t border-[#D5E6CC]/70">
-                    <span className="text-[#06180F]/70">10-Yr Bank EMI:</span>
+                    <span className="text-[#06180F]/70">Optional 10-Yr EMI:</span>
                     <span className="font-semibold text-[#0B4A2B]">From {formatINR(pkg.tenure10YrEmi)}/mo</span>
+                  </div>
+                  <div className="text-[10px] text-[#06180F]/60 font-mono mt-1 text-center">
+                    Bank loan is optional · Upfront payment accepted
                   </div>
                 </div>
               </div>
@@ -153,7 +156,7 @@ export default function PackagesPage() {
                   <th className="py-4 px-3">Gross Cost</th>
                   <th className="py-4 px-3">Subsidy</th>
                   <th className="py-4 px-3 font-semibold text-[#0B4A2B]">Net Investment</th>
-                  <th className="py-4 px-3 font-semibold text-[#0B4A2B]">10-Yr Bank EMI</th>
+                  <th className="py-4 px-3 font-semibold text-[#0B4A2B]">Optional 10-Yr EMI*</th>
                   <th className="py-4 px-3 text-right">Action</th>
                 </tr>
               </thead>
@@ -180,6 +183,15 @@ export default function PackagesPage() {
                 ))}
               </tbody>
             </table>
+          </div>
+
+          <div className="mt-4 pt-3 border-t border-[#D5E6CC] text-xs text-[#06180F]/70 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <span className="font-mono text-[#0B4A2B] font-medium">
+              * Bank loan is completely optional (just for customer information).
+            </span>
+            <span>
+              Homeowners can pay turnkey cost directly upfront and receive full ₹78,000 subsidy into their bank account.
+            </span>
           </div>
         </div>
 

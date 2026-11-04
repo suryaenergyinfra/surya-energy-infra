@@ -195,8 +195,8 @@ export const STAT_TIMELINE = [
     numericValue: 5.75,
     prefix: "",
     suffix: "% p.a.",
-    label: "10-year bank loans from 5.75%",
-    subtext: "Subsidised floating rate from major public sector banks for PM Surya Ghar with flexible tenures up to 10 years (120 months).",
+    label: "Optional 10-year bank loans from 5.75%",
+    subtext: "Subsidised floating rate from major public sector banks with tenures up to 10 years (120 months). Completely optional — pay upfront or choose loan financing.",
     // PLACEHOLDER: replace with client's real photo
     image: "/images/hero-3.webp",
   },
@@ -304,6 +304,11 @@ export const FAQ_ITEMS = [
     question: "Do on-grid solar systems work during a power outage?",
     answer:
       "No. For safety reasons, on-grid inverters automatically shut down during a utility power outage to prevent electricity from feeding into the grid while utility crews may be working.",
+  },
+  {
+    question: "Is taking a bank loan mandatory to install rooftop solar or receive the subsidy?",
+    answer:
+      "No! A bank loan is completely optional. Bank loan information and 10-year EMI estimates are provided purely for customer information and financial guidance. Homeowners who prefer to pay the turnkey EPC cost upfront can do so directly (via Bank Transfer, UPI, or Cheque) and receive the full ₹78,000 Central Government subsidy credited directly into their bank account within 30 days of commissioning. For customers who prefer zero initial out-of-pocket payment, 10-year bank loans are available as an option.",
   },
   {
     question: "What bank loan interest rates and tenures are available?",

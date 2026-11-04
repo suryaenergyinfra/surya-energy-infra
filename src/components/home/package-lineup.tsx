@@ -119,8 +119,11 @@ export function PackageLineup() {
                     {formatINR(pkg.netCost)}
                   </div>
                   <div className="flex items-center justify-between text-[11px] mt-1.5 pt-1.5 border-t border-[#D5E6CC]/70">
-                    <span className="text-[#06180F]/70">10-Yr Bank EMI:</span>
+                    <span className="text-[#06180F]/70">Optional 10-Yr EMI:</span>
                     <span className="font-semibold text-[#0B4A2B]">From {formatINR(pkg.tenure10YrEmi)}/mo</span>
+                  </div>
+                  <div className="text-[10px] text-[#06180F]/60 font-mono mt-1 text-center">
+                    Bank loan is optional · Upfront payment accepted
                   </div>
                 </div>
               </div>

@@ -48,6 +48,21 @@ export default function SubsidyFinancePage() {
           </p>
         </div>
 
+        {/* Important Reassurance: Bank Loan is NOT Mandatory */}
+        <div className="bg-white rounded-2xl border border-[#D5E6CC] p-4 sm:p-5 mb-12 flex items-start sm:items-center gap-3.5 shadow-sm max-w-4xl mx-auto">
+          <div className="w-10 h-10 rounded-xl bg-[#0B4A2B]/10 flex items-center justify-center text-[#0B4A2B] shrink-0 mt-0.5 sm:mt-0">
+            <ShieldCheck className="w-5 h-5 text-[#3F8F3A]" />
+          </div>
+          <div className="text-xs sm:text-sm">
+            <span className="font-semibold text-[#0B4A2B] block mb-0.5">
+              Is a Bank Loan Mandatory? No — It Is Completely Optional (Provided for Information).
+            </span>
+            <span className="text-[#06180F]/75">
+              Taking a bank loan is completely optional. You can choose to pay the turnkey EPC amount directly upfront (via Bank Transfer, UPI, or Cheque) and receive the full ₹78,000 Central Government subsidy directly into your bank account. 10-year bank loan information is provided purely as guidance for homeowners who prefer zero initial out-of-pocket payment.
+            </span>
+          </div>
+        </div>
+
         {/* Top 2 Cards: Subsidy + Loan Overview */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {/* Card 1: Subsidy */}

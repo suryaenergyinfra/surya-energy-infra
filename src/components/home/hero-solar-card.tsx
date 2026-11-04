@@ -246,7 +246,7 @@ export function HeroSolarCard() {
           {/* Key Facts & 10-Yr Loan Math */}
           <div className="space-y-1.5 text-xs">
             <div className="flex items-center justify-between p-2 rounded-xl bg-[#04140C]/60 border border-[rgba(255,255,255,0.08)]">
-              <span className="text-[#9DB3A5]">10-Yr Bank EMI:</span>
+              <span className="text-[#9DB3A5]">Optional 10-Yr EMI:</span>
               <span className="font-semibold text-[#8CC63F]">{current.emi10Yr}</span>
             </div>
 
@@ -261,6 +261,10 @@ export function HeroSolarCard() {
                 <span>Zero Out-of-Pocket:</span>
               </span>
               <span className="font-semibold text-white">{current.netPositive}</span>
+            </div>
+
+            <div className="text-[10px] text-[#8CC63F]/90 px-1 text-center font-mono pt-0.5">
+              * Bank loan is completely optional (just for info). Upfront payment accepted.
             </div>
           </div>
         </div>
